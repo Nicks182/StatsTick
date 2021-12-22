@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibreHardwareMonitor.Hardware;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,31 @@ namespace StatsTick
         }
 
 
+        public StringBuilder _GetDataDump()
+        {
+            StringBuilder L_HWData = new StringBuilder();
+            foreach (IHardware hardware in G_Computer.Hardware)
+            {
+                L_HWData.Append(hardware.Identifier + " - " + hardware.HardwareType.ToString() + " - " + hardware.Name + Environment.NewLine);
+
+                foreach (IHardware subhardware in hardware.SubHardware)
+                {
+                    L_HWData.Append("\t" + hardware.Identifier + " - " + hardware.HardwareType.ToString() + " - " + hardware.Name + Environment.NewLine);
+
+                    foreach (ISensor sensor in subhardware.Sensors)
+                    {
+                        L_HWData.Append("\t\t" + sensor.Identifier + "-" + sensor.SensorType.ToString() + " - " + sensor.Name + ": " + sensor.Value + Environment.NewLine);
+                    }
+                }
+
+                foreach (ISensor sensor in hardware.Sensors)
+                {
+                    L_HWData.Append("\t" + sensor.Identifier + "-" + sensor.SensorType.ToString() + " - " + sensor.Name + ": " + sensor.Value + Environment.NewLine);
+                }
+            }
+
+            return L_HWData;
+        }
 
     }
 }

@@ -77,5 +77,23 @@ namespace StatsTick
         {
             G_ST_Processes._SetTextVisible(Check_ProcesPreview.IsChecked.GetValueOrDefault(false));
         }
+
+        private void Btn_DumpAll_Click(object sender, RoutedEventArgs e)
+        {
+            //StringBuilder L_Data = new StringBuilder();
+
+            //foreach (var L_HW in G_ST_MonitorInfo.HWInfo.Items)
+            //{
+            //    L_Data.Append(L_HW.Type + "-" + L_HW.Name + ": " + Environment.NewLine);
+            //    foreach (var L_Sen in L_HW.Sensors)
+            //    {
+            //        L_Data.Append("\t" + L_Sen.Type + "-" + L_Sen.Name + ": " + L_Sen.Value + Environment.NewLine);
+            //    }
+            //}
+
+            Clipboard.SetText(G_ST_Monitor._GetDataDump().ToString());
+
+            MessageBox.Show("Hardware data copied to clipboard. Paste in text editor.");
+        }
     }
 }

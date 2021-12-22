@@ -89,7 +89,7 @@ namespace StatsTick
         private void _InitGui_CPUTemp(ST_MonitorInfo_HW_Item P_ST_MonitorInfo_HW_Item)
         {
             ST_Graph L_ST_Graph = null;
-            ST_MonitorInfo_HW_Item_Sensor L_Sensor = P_ST_MonitorInfo_HW_Item.Sensors.Where(s => s.Type == SensorType.Temperature && s.Name.Equals("Core (Tctl/Tdie)")).FirstOrDefault();
+            ST_MonitorInfo_HW_Item_Sensor L_Sensor = P_ST_MonitorInfo_HW_Item.Sensors.Where(s => s.Type == SensorType.Temperature && (s.Name.Contains(" (Tctl/Tdie)") || s.Name.Contains("CPU Package"))).FirstOrDefault();
             if (L_Sensor != null)
             {
                 L_ST_Graph = new ST_Graph(new ST_Graph_Info
@@ -184,7 +184,7 @@ namespace StatsTick
 
         private void _InitGui_GPUVRAM(ST_MonitorInfo_HW_Item P_HW)
         {
-            ST_MonitorInfo_HW_Item_Sensor L_Sensor = P_HW.Sensors.Where(s => s.Type == SensorType.SmallData && s.Name.Equals("D3D Dedicated Memory Used")).FirstOrDefault();
+            ST_MonitorInfo_HW_Item_Sensor L_Sensor = P_HW.Sensors.Where(s => s.Type == SensorType.SmallData && s.Name.Equals("GPU Memory Used")).FirstOrDefault();
             if (L_Sensor != null)
             {
                 ST_Graph L_ST_Graph = new ST_Graph(new ST_Graph_Info

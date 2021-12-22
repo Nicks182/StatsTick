@@ -21,7 +21,7 @@ namespace StatsTick
                     L_ST_Graph = G_ST_Graphs.Where(g => g.G_ST_Graph_Info.HWIdentifier == L_HW.HWIdentifier && g.G_ST_Graph_Info.SNName == L_Sensor.Name && g.G_ST_Graph_Info.Type == L_Sensor.Type).FirstOrDefault();
                     if (L_ST_Graph != null)
                     {
-                        if (L_Sensor.Name == "D3D Dedicated Memory Used")
+                        if (L_Sensor.Name == "GPU Memory Used")
                         {
                             L_ST_Graph._Update(_Get_GPU_Meme_Used(L_HW));
                         }

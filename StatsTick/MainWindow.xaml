@@ -55,6 +55,11 @@
                     Margin="{StaticResource RightMargin}"
                     Click="Btn_Stop_Click"
                 ></Button>
+                <Button 
+                    x:Name="Btn_DumpAll" 
+                    Content="Data Dump" 
+                    Margin="{StaticResource RightMargin}"
+                    Click="Btn_DumpAll_Click"></Button>
                 <CheckBox
                     x:Name="Check_ShowGraphs"
                     IsChecked="True"
