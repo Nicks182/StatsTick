@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatsTick", "StatsTick\StatsTick.csproj", "{A2E55D2D-5AA5-4313-AC9B-55619B556700}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2E55D2D-5AA5-4313-AC9B-55619B556700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E55D2D-5AA5-4313-AC9B-55619B556700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E55D2D-5AA5-4313-AC9B-55619B556700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E55D2D-5AA5-4313-AC9B-55619B556700}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE25E0BA-71E2-48C9-8E06-7696B7BBEA0C}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="StatsTick.ST_ProcessStamp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StatsTick"
+             mc:Ignorable="d" 
+             
+             x:Name="StampButton"
+             HorizontalAlignment="Right"
+             Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="AniWidthKey" Storyboard.TargetName="StampButton">
+            <DoubleAnimation Storyboard.TargetProperty="Width" From="0" To="100" Duration="0:0:0:0.5" />
+        </Storyboard>
+    </UserControl.Resources>
+    <!--<UserControl.Triggers>
+        <EventTrigger RoutedEvent="UserControl.Loaded">
+            <BeginStoryboard x:Name="StoryWidth">
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Width" From="0" To="100" Duration="0:0:0:0.5" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>-->
+
+    <Border 
+        Margin="3,0,3,0"
+        Background="Transparent"
+        RenderTransformOrigin="0.5,0.5"
+    >
+        <Border.RenderTransform>
+            <ScaleTransform ScaleX="-1" />
+        </Border.RenderTransform>
+        <Button
+            x:Name="Btn_Text"
+            Grid.Row="1"
+            Content=""
+            Width="100"
+            MinHeight="10"
+            VerticalAlignment="Stretch"
+            Click="Btn_Text_Click"
+        ></Button>
+            
+    </Border>
+</UserControl>
