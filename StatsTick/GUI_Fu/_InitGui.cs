@@ -18,6 +18,8 @@ namespace StatsTick
             Panel_CPUCores.Children.Clear();
             Panel_Right.Children.Clear();
             Panel_GPU.Children.Clear();
+            Grid_CPUMainGraph.Children.Clear();
+            Grid_CPUMainProcesses.Children.Clear();
             G_ST_Graphs.Clear();
 
             _InitGui_Processes();
