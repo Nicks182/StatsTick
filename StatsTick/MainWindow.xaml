@@ -16,15 +16,11 @@
         AllowsTransparency="True"
         Loaded="Window_Loaded">
     <Window.Resources>
-        <Thickness x:Key="PanelMargin">5,5,5,0</Thickness>
-        <Thickness x:Key="TopMargin">0,5,0,0</Thickness>
-        <Thickness x:Key="LeftMargin">5,0,0,0</Thickness>
-        <Thickness x:Key="RightMargin">0,0,5,0</Thickness>
-        <Thickness x:Key="BottomMargin">0,0,0,5</Thickness>
+        
     </Window.Resources>
 
     
-    <Grid>
+    <Grid Margin="0,0,0,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -38,9 +34,13 @@
             Grid.Row="0"
             Margin="{StaticResource PanelMargin}"
         >
-
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
             <StackPanel 
+                Grid.Column="0"
                 Orientation="Horizontal"
             >
                 <Button
@@ -64,6 +64,7 @@
                     x:Name="Check_ShowGraphs"
                     IsChecked="True"
                     Content="Show Graphs"
+                    Margin="{StaticResource RightMargin}"
                     Checked="Check_ShowGraphs_Checked"
                     Unchecked="Check_ShowGraphs_Checked"
                 ></CheckBox>
@@ -72,6 +73,7 @@
                     x:Name="Check_Processes"
                     IsChecked="False"
                     Content="Processes?"
+                    Margin="{StaticResource RightMargin}"
                     Checked="Check_Processes_Checked"
                     Unchecked="Check_Processes_Checked"
                 ></CheckBox>
@@ -79,9 +81,31 @@
                     x:Name="Check_ProcesPreview"
                     IsChecked="False"
                     Content="Process Preview"
+                    Margin="{StaticResource RightMargin}"
                     Checked="Check_ProcesPreview_Checked"
                     Unchecked="Check_ProcesPreview_Checked"
                 ></CheckBox>
+
+                
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button
+                    x:Name="Btn_ResetMinMax"
+                    Content="Reset Min/Max"
+                    Margin="{StaticResource RightMargin}"
+                    
+                    Click="Btn_ResetMinMax_Click"
+                ></Button>
+                
+                <Button
+                    x:Name="Btn_Settings"
+                    Content="Settings"
+                    Margin="{StaticResource RightMargin}"
+                    
+                    Click="Btn_Settings_Click"
+                ></Button>
             </StackPanel>
         </Grid>
 
@@ -107,11 +131,11 @@
             Margin="{StaticResource PanelMargin}"
         >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="185"></ColumnDefinition>
+                <ColumnDefinition x:Name="Col_Left" Width="185"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="185"></ColumnDefinition>
+                <ColumnDefinition x:Name="Col_Right" Width="185"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <!-- Memory, Swap, Network-->
@@ -129,6 +153,7 @@
 
             <GridSplitter
                 Grid.Column="1"
+                x:Name="Split_Left"
                 BorderThickness="1"
                 Width="8"
                 Background="{StaticResource WindowBorderColour}"
@@ -175,6 +200,7 @@
             <GridSplitter
                 Grid.Column="3"
                 BorderThickness="1"
+                x:Name="Split_Right"
                 Width="8"
                 Background="{StaticResource WindowBorderColour}"
                 ResizeDirection="Columns"

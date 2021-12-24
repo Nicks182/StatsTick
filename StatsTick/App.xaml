@@ -4,12 +4,24 @@
              xmlns:local="clr-namespace:StatsTick"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Thickness x:Key="PanelMargin">5,5,5,0</Thickness>
+            <Thickness x:Key="TopMargin">0,5,0,0</Thickness>
+            <Thickness x:Key="LeftMargin">5,0,0,0</Thickness>
+            <Thickness x:Key="RightMargin">0,0,5,0</Thickness>
+            <Thickness x:Key="BottomMargin">0,0,0,5</Thickness>
+            <Thickness x:Key="BottomRightMargin">0,0,5,5</Thickness>
         </ResourceDictionary>
 
 
+        
+        
     </Application.Resources>
 </Application>

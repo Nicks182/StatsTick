@@ -8,7 +8,7 @@ using LibreHardwareMonitor.Hardware;
 
 namespace StatsTick
 {
-    partial class ST_Monitor
+    public partial class ST_Monitor
     {
         public bool G_TrackProcess = false;
         Computer G_Computer = null;

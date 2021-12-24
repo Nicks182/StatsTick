@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StatsTick
 {
-    partial class ST_Monitor
+    public partial class ST_Monitor
     {
         public ST_MonitorInfo _GetAll()
         {

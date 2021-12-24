@@ -1,0 +1,519 @@
+﻿<Window x:Class="StatsTick.Win_Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StatsTick"
+        mc:Ignorable="d"
+        
+        xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+        
+        Style="{DynamicResource CustomWindowStyle}"
+        Title="Settings" 
+        Height="460" 
+        Width="600"
+        BorderThickness="1" 
+        WindowStartupLocation="CenterScreen" 
+        SizeToContent="Manual" 
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ColorPicker;component/Styles/DefaultColorPickerStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="{StaticResource PanelMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid 
+            Grid.Row="0"
+            Margin="{StaticResource BottomMargin}"
+        >
+            <Border 
+                BorderThickness="0,0,0,3"
+                BorderBrush="{StaticResource WindowBorderColour}"
+                
+            >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        Margin="{StaticResource BottomMargin}"
+                        Text="On some systems the names of the Sensors the app looks for by default might not be correct. This screen allows you to select the correct Sensor names. "
+                    ></TextBlock>
+
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        Margin="{StaticResource BottomMargin}"
+                        Text="The GPU VRAM usage is being calculated with each tick. This is why you have to specify the VRAM Toal and VRAM Used so the application knows how to calculate the % used."
+                    ></TextBlock>
+                    
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        Margin="{StaticResource BottomMargin}"
+                        Text="Check the items you wish to overrride."
+                    ></TextBlock>
+
+                </StackPanel>
+
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="{StaticResource BottomMargin}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <!--CPU Temp-->
+            <CheckBox
+                Grid.Row="0"
+                Grid.Column="0"
+                x:Name="Check_CPUTemp"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="CPU Temp Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="0"
+                Grid.Column="2"
+                x:Name="Drop_CPUTemp"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="0" 
+                Grid.Column="3"
+                x:Name="Color_CPU"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--CPU Load-->
+            <CheckBox
+                Grid.Row="1"
+                Grid.Column="0"
+                x:Name="Check_CPULoad"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="CPU Load Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="1"
+                Grid.Column="2"
+                x:Name="Drop_CPULoad"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="1" 
+                Grid.Column="3"
+                x:Name="Color_CPULoad"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--GPU Load-->
+            <CheckBox
+                Grid.Row="2"
+                Grid.Column="0"
+                x:Name="Check_GPULoad"
+                VerticalAlignment="Center"
+            ></CheckBox>
+
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="GPU Load Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="2"
+                Grid.Column="2"
+                x:Name="Drop_GPULoad"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="2" 
+                Grid.Column="3"
+                x:Name="Color_GPULoad"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--GPU Temp-->
+            <CheckBox
+                Grid.Row="3"
+                Grid.Column="0"
+                x:Name="Check_GPUTemp"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="GPU Temp Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="3"
+                Grid.Column="2"
+                x:Name="Drop_GPUTemp"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="3" 
+                Grid.Column="3"
+                x:Name="Color_GPUTemp"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--GPU Hot Spot-->
+            <CheckBox
+                Grid.Row="4"
+                Grid.Column="0"
+                x:Name="Check_GPUHotSpot"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="GPU Hot Spot Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="4"
+                Grid.Column="2"
+                x:Name="Drop_GPUHotSpot"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="4" 
+                Grid.Column="3"
+                x:Name="Color_GPUHotSpot"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--GPU VRAM Total-->
+            <CheckBox
+                Grid.Row="5"
+                Grid.Column="0"
+                x:Name="Check_GPUVRAMTotal"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="GPU VRAM Total Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="5"
+                Grid.Column="2"
+                x:Name="Drop_GPUVramTotal"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="5" 
+                Grid.Column="3"
+                x:Name="Color_GPUVRAMTotal"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--GPU VRAM Used-->
+            <CheckBox
+                Grid.Row="6"
+                Grid.Column="0"
+                x:Name="Check_GPUVRAMUsed"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="1"
+                Text="GPU VRAM Used Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="6"
+                Grid.Column="2"
+                x:Name="Drop_GPUVramUsed"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="6" 
+                Grid.Column="3"
+                x:Name="Color_GPUVRAMUsed"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--Memor-->
+            <CheckBox
+                Grid.Row="7"
+                Grid.Column="0"
+                x:Name="Check_Memory"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="1"
+                Text="Memory Used Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="7"
+                Grid.Column="2"
+                x:Name="Drop_MemoryUsed"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="7" 
+                Grid.Column="3"
+                x:Name="Color_MemoryUsed"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--SWAP-->
+            <CheckBox
+                Grid.Row="8"
+                Grid.Column="0"
+                x:Name="Check_Swap"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="8"
+                Grid.Column="1"
+                Text="SWAP Used Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="8"
+                Grid.Column="2"
+                x:Name="Drop_SWAPUsed"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="8" 
+                Grid.Column="3"
+                x:Name="Color_Swap"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--Storage-->
+            <CheckBox
+                Grid.Row="9"
+                Grid.Column="0"
+                x:Name="Check_Storage"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="9"
+                Grid.Column="1"
+                Text="Storage Temp Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="9"
+                Grid.Column="2"
+                x:Name="Drop_StorageTemp"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="9" 
+                Grid.Column="3"
+                x:Name="Color_Storage"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+            <!--Network Down-->
+            <CheckBox
+                Grid.Row="10"
+                Grid.Column="0"
+                x:Name="Check_NetworkDown"
+                VerticalAlignment="Center"
+            ></CheckBox>
+            
+            <TextBlock
+                Grid.Row="10"
+                Grid.Column="1"
+                Text="Network Down Source: "
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></TextBlock>
+
+            <ComboBox
+                Grid.Row="10"
+                Grid.Column="2"
+                x:Name="Drop_NetworkDown"
+                Margin="{StaticResource BottomRightMargin}"
+                VerticalAlignment="Center"
+            ></ComboBox>
+
+            <colorpicker:PortableColorPicker 
+                Grid.Row="10" 
+                Grid.Column="3"
+                x:Name="Color_NetworkDown"
+                SmallChange="5"
+                ShowAlpha="False"
+                Style="{StaticResource DefaultColorPickerStyle}"
+                ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
+                SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"
+                VerticalAlignment="Center"
+            />
+
+
+        </Grid>
+
+        <Grid
+            Grid.Row="2"
+            Margin="{StaticResource BottomMargin}"
+        >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="1"
+                x:Name="Btn_Cancel"
+                Content="Cancel"
+                Click="Btn_Cancel_Click"
+            ></Button>
+
+            <Button
+                Grid.Column="2"
+                x:Name="Btn_Save"
+                Content="Save"
+                Click="Btn_Save_Click"
+                Margin="{StaticResource LeftMargin}"
+            ></Button>
+
+        </Grid>
+        
+    </Grid>
+</Window>

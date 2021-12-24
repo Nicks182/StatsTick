@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StatsTick
 {
-    partial class ST_Monitor
+    public partial class ST_Monitor
     {
         const string G_ProcessQuery = "SELECT * FROM Win32_PerfFormattedData_PerfProc_Process WHERE Name <> '_Total' AND Name <> 'Idle'";
         int G_ProcessorCount = Environment.ProcessorCount;
@@ -46,7 +46,7 @@ namespace StatsTick
                 });
 
             }
-
+            L_Info.Items = L_Info.Items.OrderByDescending(p => p.Value).ToList();
             return L_Info;
         }
 

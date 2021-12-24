@@ -29,6 +29,9 @@ namespace StatsTick
         double G_ValueMin = 9999;
         double G_ValueMax = 0;
 
+        public delegate void G_ShowGraphClickHandler();
+        public event G_ShowGraphClickHandler G_OnShowGraphClick;
+
         public ST_Graph(ST_Graph_Info P_ST_Graph_Info)
         {
             G_ST_Graph_Info = P_ST_Graph_Info;
@@ -44,9 +47,8 @@ namespace StatsTick
 
         private void Lbl_Name_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            G_ShowGraph = !G_ShowGraph;
-
-            _SetGraphVisibillity(G_ShowGraph);
+            _SetGraphVisibillity(!G_ShowGraph);
+            G_OnShowGraphClick?.Invoke();
         }
 
         private void _Init()
@@ -64,6 +66,17 @@ namespace StatsTick
             Border_Main.BorderBrush = new SolidColorBrush(G_ST_Graph_Info.Color);
             Border.BorderBrush = new SolidColorBrush(G_ST_Graph_Info.Color);
             Graph_Line.Stroke = new SolidColorBrush(G_ST_Graph_Info.Color);
+
+            if(G_ST_Graph_Info.Setting != null)
+            {
+                _SetGraphVisibillity(G_ST_Graph_Info.Setting.ShowGraph);
+            }
+        }
+
+        public void _ResetMinMax()
+        {
+            G_ValueMax = 0;
+            G_ValueMin = 100;
         }
 
         public void _Update(double P_Value)
@@ -83,6 +96,11 @@ namespace StatsTick
             else
             {
                 Border.Visibility = Visibility.Collapsed;
+            }
+
+            if (G_ST_Graph_Info.Setting != null)
+            {
+                G_ST_Graph_Info.Setting.ShowGraph = G_ShowGraph;
             }
         }
 
@@ -163,5 +181,6 @@ namespace StatsTick
         public double OffSet { get; set; }
         public double Step = 2; // Default
         public bool IsDynamicWidth = false; // Default
+        public ST_Settings_Info_HWItem Setting { get; set; }
     }
 }

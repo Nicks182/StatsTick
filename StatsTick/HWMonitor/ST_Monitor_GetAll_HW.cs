@@ -9,7 +9,7 @@ using LibreHardwareMonitor.Hardware;
 
 namespace StatsTick
 {
-    partial class ST_Monitor
+    public partial class ST_Monitor
     {
 
         private ST_MonitorInfo_HW _GetAll_HW(DateTime P_TimeStamp)

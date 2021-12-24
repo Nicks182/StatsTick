@@ -14,5 +14,6 @@ namespace StatsTick
         public static Color RAM = Color.FromRgb(113, 80, 166);
         public static Color VirMem = Color.FromRgb(166, 147, 80);
         public static Color Drive = Color.FromRgb(166, 80, 80);
+        public static Color Network = Color.FromRgb(179, 196, 51);
     }
 }
