@@ -364,8 +364,10 @@ namespace StatsTick
                     SNName = _InitGui_GetName(L_Setting, L_Sensor.Name),
                     Type = L_Sensor.Type,
                     Symbol = "°C",
-                    Color = _InitGui_GetColor(L_Setting, GUI_Colors.GPU)
+                    Color = _InitGui_GetColor(L_Setting, GUI_Colors.GPU),
+                    Setting = L_Setting
                 });
+                L_ST_Graph.G_OnShowGraphClick += L_ST_Graph_G_OnShowGraphClick;
                 G_ST_Graphs.Add(L_ST_Graph);
                 Panel_GPU.Children.Add(L_ST_Graph);
             }
